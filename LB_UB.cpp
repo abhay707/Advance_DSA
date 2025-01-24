@@ -23,25 +23,26 @@ int lower_bound(int n, int arr[], int val){
 		if(arr[mid]<val){
 			left = mid + 1;
 		}else{
-			left + mid;
 			right = mid;
 		}
 	}
-	return mid;
+	return left;
 }
 
-// int upper_bound(int n, int arr[], int val){
-// 	int ub = 0;
-
-// 	for (int i = 0; i < n; ++i)
-// 	{
-// 		if(arr[i] == val){
-// 			ub = i;
-// 		}
-// 	}
-
-// 	return ub;
-// }
+int upper_bound(int n, int arr[], int val){
+	int left, right, mid;
+	left = 0;
+	right = n;
+	while(left<right){
+		mid = (left + right)/2;
+		if(arr[mid]>val){
+			right = mid;
+		}else{
+			left = mid + 1;
+		}
+	}
+	return left;
+}
 
 int main(){
 	#ifndef ONLINE_JUDGE
@@ -63,7 +64,7 @@ int main(){
 	cin>>val;
 
 	cout<<lower_bound(n,arr,val)<<endl;
-	// cout<<upper_bound(n,arr,val)<<endl;
+	cout<<upper_bound(n,arr,val)<<endl;
 
 	
 }
